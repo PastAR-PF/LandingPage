@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 340" fill="currentColor">
+  <!-- Top macron/bar -->
+  <rect x="58" y="0" width="84" height="36" rx="18" ry="18"/>
+  <!-- Main O shape - refined proportions -->
+  <path d="M100,56 C41.5,56 0,111.5 0,180 C0,248.5 41.5,304 100,304 C158.5,304 200,248.5 200,180 C200,111.5 158.5,56 100,56 Z M100,98 C134,98 162,134.5 162,180 C162,225.5 134,262 100,262 C66,262 38,225.5 38,180 C38,134.5 66,98 100,98 Z"/>
+  <!-- Bottom bar/underscore -->
+  <rect x="58" y="316" width="84" height="14" rx="7" ry="7"/>
+</svg>

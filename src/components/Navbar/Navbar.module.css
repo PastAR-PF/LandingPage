@@ -1,0 +1,145 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: all var(--transition-md);
+}
+
+.navbar.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  padding: 10px 0;
+}
+
+.inner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
+}
+
+.logoIcon {
+  height: 42px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.5px;
+}
+
+.logoAccent {
+  background: url('/images/argentina-flag.png') center/cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.link {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.link:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-ghost);
+}
+
+.ctaDesktop {
+  font-size: 0.9rem;
+  padding: 10px 24px;
+}
+
+.ctaMobile {
+  display: none;
+}
+
+/* Burger */
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  z-index: 1001;
+  padding: 4px;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 31, 13, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-md);
+  }
+
+  .linksOpen {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .link {
+    font-size: 1.3rem;
+    padding: 12px 24px;
+    color: var(--color-text);
+  }
+
+  .ctaDesktop {
+    display: none;
+  }
+
+  .ctaMobile {
+    display: block;
+    margin-top: 16px;
+  }
+
+  .burger {
+    display: block;
+  }
+}
