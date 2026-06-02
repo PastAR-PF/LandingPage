@@ -1,13 +1,16 @@
 .section {
   background: var(--color-bg);
   padding: 120px 0;
+  position: relative;
 }
 
-.container {
+/* ===== Parte 1 — Historia ===== */
+.historyLayout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 80px;
+  margin-bottom: 100px;
 }
 
 .imageBlock {
@@ -15,12 +18,47 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  height: 520px;
 }
 
 .image {
   width: 100%;
-  height: auto;
+  height: 116%;
+  object-fit: cover;
   display: block;
+}
+
+/* Badge flotante sobre la imagen */
+.floatBadge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--forest);
+  box-shadow: var(--shadow-md);
+}
+
+.floatBadgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--moss);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
 }
 
 .textBlock {
@@ -29,23 +67,134 @@
 }
 
 .highlight {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .desc {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--color-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 20px;
+  line-height: 1.75;
+  margin-bottom: 18px;
 }
 
+/* Valores */
+.values {
+  display: flex;
+  gap: 32px;
+  margin-top: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.valueMetric {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.valueLabel {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  max-width: 110px;
+  line-height: 1.4;
+}
+
+/* ===== Parte 2 — El equipo ===== */
+.teamGrid {
+  text-align: center;
+}
+
+.teamGridTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 40px;
+}
+
+.members {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 16px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  cursor: default;
+  transition: border-color 0.18s var(--ease-out),
+              box-shadow 0.18s var(--ease-out);
+}
+
+.memberCard:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-sm);
+}
+
+.memberName {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.memberLegajo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 960px) {
-  .container {
+  .historyLayout {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
   .imageBlock {
     order: -1;
+    height: 380px;
+  }
+  .members {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .members {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .values {
+    gap: 20px;
+    flex-wrap: wrap;
   }
 }

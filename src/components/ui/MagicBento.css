@@ -1,0 +1,164 @@
+/* ===== MagicBento — PastAR light theme ===== */
+.mb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.mb-section {
+  position: relative;
+  user-select: none;
+}
+
+.mb-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 200px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: #FFFFFF;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
+
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 220px;
+}
+
+.mb-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-hover);
+}
+
+/* Media (ilustración SVG) */
+.mb-card__media {
+  flex: 1;
+  min-height: 90px;
+  background: #FCFAF1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 2;
+}
+
+.mb-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+}
+
+/* Body (texto) */
+.mb-card__body {
+  padding: 14px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  position: relative;
+  z-index: 2;
+}
+
+.mb-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--moss);
+  background: var(--mint);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.mb-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.mb-card__description {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Text clamp opcional */
+.mb-card--clip .mb-card__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+.mb-card--clip .mb-card__description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Border glow que sigue al cursor */
+.mb-card--glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.9)) 0%,
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.45)) 30%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Particles */
+.mb-particle-container { position: relative; overflow: hidden; }
+
+.mb-spotlight {
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* ===== Layout bento: 5 cards ===== */
+/* Tablet */
+@media (min-width: 600px) {
+  .mb-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop — bento 2 filas, entra en una vista. Módulo 3 (mapa) destacado a la derecha */
+@media (min-width: 1024px) {
+  .mb-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, minmax(210px, 1fr));
+    gap: 18px;
+  }
+  .mb-card { min-height: 0; }
+  .mb-card:nth-child(1) { grid-area: 1 / 1 / 2 / 2; } /* fila 1, col 1 */
+  .mb-card:nth-child(2) { grid-area: 1 / 2 / 2 / 4; } /* fila 1, cols 2-3 (ancho) */
+  .mb-card:nth-child(3) { grid-area: 1 / 4 / 3 / 5; } /* col 4, filas 1-2 (alto) */
+  .mb-card:nth-child(4) { grid-area: 2 / 1 / 3 / 3; } /* fila 2, cols 1-2 (ancho) */
+  .mb-card:nth-child(5) { grid-area: 2 / 3 / 3 / 4; } /* fila 2, col 3 */
+}

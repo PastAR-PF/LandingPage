@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Contact.module.css';
-import { HiMail, HiLocationMarker, HiPhone, HiAcademicCap } from 'react-icons/hi';
+import { HiMail, HiLocationMarker, HiAcademicCap } from 'react-icons/hi';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -21,11 +21,16 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <span className="section-label">Contacto</span>
-          <h2 className="section-title">
+          <motion.h2
+            className={`section-title ${styles.headerTitle}`}
+            initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
+            animate={inView ? { clipPath: 'inset(0 0 0% 0)', opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+          >
             Unite a la ganadería
             <br />
             <span className={styles.highlight}>inteligente</span>
-          </h2>
+          </motion.h2>
           <p className="section-subtitle">
             ¿Querés saber más sobre PastAR? Dejanos tu mensaje y te contactamos para una demo personalizada.
           </p>
@@ -36,17 +41,21 @@ export default function Contact() {
             className={styles.infoCol}
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
           >
-            <div className={styles.infoCard}>
+            {/* Email destacado */}
+            <a href="mailto:contacto@pastar.com.ar" className={styles.emailHighlight}>
               <div className={styles.infoIcon}>
                 <HiMail />
               </div>
               <div>
-                <h4>Email</h4>
-                <p>contacto@pastar.com.ar</p>
+                <div className={styles.infoCard} style={{ background: 'none', border: 'none', padding: 0 }}>
+                  <h4>Escribinos directo</h4>
+                </div>
+                <span className={styles.emailAddress}>contacto@pastar.com.ar</span>
               </div>
-            </div>
+            </a>
+
             <div className={styles.infoCard}>
               <div className={styles.infoIcon}>
                 <HiLocationMarker />
@@ -56,19 +65,10 @@ export default function Contact() {
                 <p>UTN — Facultad Regional Córdoba, Argentina</p>
               </div>
             </div>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>
-                <HiPhone />
-              </div>
-              <div>
-                <h4>Teléfono</h4>
-                <p>+54 351 XXX XXXX</p>
-              </div>
-            </div>
 
             <div className={styles.utnBadge}>
               <HiAcademicCap className={styles.utnIcon} />
-              <p>Proyecto de Tesis Final — Ingeniería en Sistemas, UTN FRC 2025</p>
+              <p>Proyecto de Tesis Final — Ingeniería en Sistemas, UTN FRC 2026</p>
             </div>
           </motion.div>
 

@@ -1,7 +1,7 @@
+/* Footer en Forest — ancla de marca al final de la página */
 .footer {
-  background: var(--color-bg-alt);
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text);
+  background: var(--forest);
+  color: #FFFFFF;
   padding: 60px 0 32px;
 }
 
@@ -27,30 +27,28 @@
 }
 
 .logoIcon {
-  height: 36px;
+  height: 32px;
   width: auto;
+  /* SVG sobre Forest: invertir para blanco */
   filter: brightness(0) invert(1);
 }
 
 .logoText {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-text);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
 }
 
 .logoAccent {
-  background: url('/images/argentina-flag.png') center/cover no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: inherit;
 }
 
 .brandDesc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.70);
   max-width: 300px;
 }
 
@@ -58,16 +56,16 @@
 .linkGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .linkGroupTitle {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--sage);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
 .linkGroup ul {
@@ -78,19 +76,19 @@
 
 .footerLink {
   font-size: 0.88rem;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.65);
   transition: color var(--transition-fast);
 }
 
 .footerLink:hover {
-  color: var(--color-accent);
+  color: #FFFFFF;
 }
 
 /* Divider */
 .divider {
   width: 100%;
   height: 1px;
-  background: var(--color-border);
+  background: rgba(255, 255, 255, 0.14);
   margin-bottom: 24px;
 }
 
@@ -104,20 +102,20 @@
 }
 
 .copyright {
-  font-size: 0.82rem;
-  color: var(--color-text-muted);
+  font-size: 0.80rem;
+  color: rgba(255, 255, 255, 0.50);
 }
 
 .madeWith {
-  font-size: 0.82rem;
-  color: var(--color-text-muted);
+  font-size: 0.80rem;
+  color: rgba(255, 255, 255, 0.50);
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
 .heart {
-  color: var(--color-accent);
+  color: #F4A261;
   font-size: 0.9rem;
 }
 

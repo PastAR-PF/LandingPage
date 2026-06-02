@@ -1,75 +1,107 @@
 /* ==============================
-   PastAR — Global Design System
-   Light Beige Premium Theme
+   PastAR — Sistema de Diseño
+   Light Field Theme
    ============================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 /* --- Design Tokens --- */
 :root {
-  /* Colors — Dark Green Theme with Light Surfaces */
-  --color-primary: #FFFFFF; /* Bright green accent changed to white */
-  --color-primary-light: #FFFFFF;
-  --color-primary-dark: #FFFFFF;
-  --color-primary-pale: rgba(255, 255, 255, 0.1);
-  --color-primary-ghost: rgba(255, 255, 255, 0.05);
-  
-  --color-accent: #FFFFFF; 
-  --color-accent-light: #FFFFFF;
-  --color-accent-dark: #FFFFFF;
-  
-  --color-bg: #0A1F0D; /* Deep dark green background */
-  --color-bg-alt: #061208; /* Even darker green */
-  
-  --color-bg-elevated: rgba(255, 255, 255, 0.05); /* Dark surfaces */
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-surface-hover: rgba(255, 255, 255, 0.08);
-  
-  /* All text colors to white */
-  --color-text: #FFFFFF;
-  --color-text-secondary: rgba(255, 255, 255, 0.85);
-  --color-text-muted: rgba(255, 255, 255, 0.6);
-  
-  --color-text-dark: #FFFFFF;
-  --color-text-secondary-dark: rgba(255, 255, 255, 0.85);
-  
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(255, 255, 255, 0.2);
+  /* Brand palette */
+  --forest:  #1A5C38;
+  --moss:    #3A8A58;
+  --sage:    #85C49A;
+  --mint:    #D4EDD9;
+  --tierra:  #7A4F35;
+  --crema:   #F5EFE0;
+  --body:    #2D2D2D;
+
+  /* Primary = Forest */
+  --color-primary:       #1A5C38;
+  --color-primary-light: #3A8A58;
+  --color-primary-dark:  #134430;
+  --color-primary-pale:  #D4EDD9;
+  --color-primary-ghost: rgba(26, 92, 56, 0.06);
+
+  /* Accent = Tierra */
+  --color-accent:       #7A4F35;
+  --color-accent-light: #9A6F55;
+  --color-accent-dark:  #5A3320;
+
+  /* Backgrounds */
+  --color-bg:          #FFFFFF;
+  --color-bg-alt:      #F7FAF8;   /* muy sutil tinte verde */
+  --color-bg-crema:    #F5EFE0;
+  --color-bg-forest:   #1A5C38;   /* secciones oscuras */
+
+  /* Surfaces */
+  --color-bg-elevated:   #FFFFFF;
+  --color-surface:       rgba(255, 255, 255, 0.92);
+  --color-surface-hover: rgba(26, 92, 56, 0.04);
+
+  /* Text */
+  --color-text:               #2D2D2D;
+  --color-text-secondary:     #4E6056;
+  --color-text-muted:         #7A9085;
+  --color-text-dark:          #2D2D2D;
+  --color-text-secondary-dark:#4E6056;
+
+  /* Para secciones sobre Forest (hero, footer) */
+  --color-text-on-dark:           #FFFFFF;
+  --color-text-secondary-on-dark: rgba(255, 255, 255, 0.80);
+  --color-text-muted-on-dark:     rgba(255, 255, 255, 0.55);
+
+  /* Borders */
+  --color-border:       #E4E7E2;
+  --color-border-hover: #B8D0BE;
 
   /* Typography */
-  --font-heading: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-space-grotesk), -apple-system, sans-serif;
+  --font-body:    var(--font-source-sans), -apple-system, sans-serif;
+  --font-mono:    var(--font-mono), 'Courier New', monospace;
 
   /* Sizing */
-  --container-max: 1200px;
-  --container-wide: 1400px;
-  --section-padding: 100px 0;
+  --container-max:          1200px;
+  --container-wide:         1400px;
+  --section-padding:        100px 0;
   --section-padding-mobile: 60px 0;
 
-  /* Fluid Radii */
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 32px;
-  --radius-xl: 48px;
-  --radius-blob: 40% 60% 55% 45% / 55% 40% 60% 45%;
+  /* Radii — base 4px, eco isotipo en xl */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
 
-  /* Shadows */
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(74, 222, 128, 0.2);
-  --shadow-glow-strong: 0 0 60px rgba(74, 222, 128, 0.4);
+  /* Shadows — suaves, tintadas en verde */
+  --shadow-xs: 0 1px 4px  rgba(26, 92, 56, 0.06);
+  --shadow-sm: 0 2px 8px  rgba(26, 92, 56, 0.08);
+  --shadow-md: 0 4px 24px rgba(26, 92, 56, 0.12);
+  --shadow-lg: 0 8px 40px rgba(26, 92, 56, 0.16);
 
-  /* Glass */
-  --glass-bg: rgba(10, 31, 13, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(20px);
+  /* Glass (para navbar sobre hero) */
+  --glass-bg:     rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(26, 92, 56, 0.12);
+  --glass-blur:   blur(16px);
+
+  /* Easing */
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-fluid:  cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 
   /* Transitions */
-  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
-  --transition-fast: 0.2s var(--ease-fluid);
-  --transition-md: 0.4s var(--ease-fluid);
-  --transition-slow: 0.6s var(--ease-fluid);
+  --transition-fast: 0.16s var(--ease-out);
+  --transition-md:   0.22s var(--ease-out);
+  --transition-slow: 0.4s  var(--ease-fluid);
+}
+
+/* --- Selección de texto verde PastAR --- */
+::selection {
+  background: #3A8A58;
+  color: #FFFFFF;
+}
+::-moz-selection {
+  background: #3A8A58;
+  color: #FFFFFF;
 }
 
 /* --- Reset & Base --- */
@@ -104,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 h2 {
@@ -136,7 +168,7 @@ ul {
   list-style: none;
 }
 
-/* --- Utility Classes --- */
+/* --- Utilities --- */
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
@@ -159,7 +191,7 @@ ul {
   align-items: center;
   gap: 8px;
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -170,8 +202,8 @@ ul {
 .section-label::before {
   content: '';
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: var(--color-primary);
   border-radius: 50%;
 }
@@ -194,87 +226,112 @@ ul {
   gap: 8px;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1rem;
-  padding: 14px 32px;
+  font-size: 0.95rem;
+  padding: 12px 28px;
   border: none;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  /* Especificar propiedades exactas — nunca `all` */
+  transition: background-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              transform 140ms var(--ease-out);
   position: relative;
   overflow: hidden;
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
 .btn-primary {
   background: var(--color-primary);
-  color: var(--color-bg);
+  color: #FFFFFF;
 }
 
 .btn-primary:hover {
   background: var(--color-primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  border: 1.5px solid var(--color-primary);
 }
 
 .btn-secondary:hover {
-  background: var(--color-primary);
-  color: var(--color-bg);
-  transform: translateY(-2px);
+  background: var(--color-primary-ghost);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-accent {
   background: var(--color-accent);
-  color: white;
+  color: #FFFFFF;
 }
 
 .btn-accent:hover {
   background: var(--color-accent-dark);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
-/* --- Glass Card --- */
-.glass-card {
-  background: var(--color-surface);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+/* Botón sobre fondo oscuro (hero) */
+.btn-light {
+  background: #FFFFFF;
+  color: var(--color-primary);
+}
+
+.btn-light:hover {
+  background: var(--mint);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-outline-light:hover {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* --- Cards --- */
+.card {
+  background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--transition-md),
+              border-color var(--transition-md),
+              transform var(--transition-md);
 }
 
-.glass-card:hover {
-  background: var(--color-surface-hover);
+.card:hover {
   border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
-/* --- Liquid Shapes --- */
+/* --- Blobs decorativos (solo en secciones con bg claro) --- */
 .blob {
   position: absolute;
-  border-radius: var(--radius-blob);
+  border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
   filter: blur(80px);
-  opacity: 0.12;
+  opacity: 0.10;
   pointer-events: none;
   z-index: 0;
 }
 
 .blob-green {
-  background: var(--color-primary);
+  background: var(--forest);
 }
 
 .blob-accent {
-  background: var(--color-accent);
+  background: var(--moss);
 }
 
-/* --- Wave Divider --- */
+/* --- Wave dividers --- */
 .wave-divider {
   position: relative;
   width: 100%;

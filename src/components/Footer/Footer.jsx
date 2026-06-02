@@ -24,7 +24,7 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <a href="#hero" className={styles.logo}>
-              <img src="/images/logo.svg" alt="PastAR Logo" className={styles.logoIcon} />
+              <img src="/images/pastar-mark-reverse.svg" alt="PastAR Logo" className={styles.logoIcon} />
               <span className={styles.logoText}>
                 Past<span className={styles.logoAccent}>AR</span>
               </span>
