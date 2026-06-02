@@ -5,9 +5,10 @@ import { HiMenu, HiX } from 'react-icons/hi';
 
 const navLinks = [
   { label: 'Inicio', href: '#hero' },
-  { label: 'Módulos', href: '#features' },
-  { label: 'Quiénes Somos', href: '#team' },
+  { label: 'Funcionalidades', href: '#features' },
+  { label: 'Cómo funciona', href: '#how' },
   { label: 'Hardware IoT', href: '#collar' },
+  { label: 'Equipo', href: '#team' },
 ];
 
 export default function Navbar() {
@@ -26,10 +27,11 @@ export default function Navbar() {
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} id="navbar">
       <div className={styles.inner}>
         <a href="#hero" className={styles.logo}>
-          <img src="/images/logo.svg" alt="PastAR Logo" className={styles.logoIcon} />
-          <span className={styles.logoText}>
-            Past<span className={styles.logoAccent}>AR</span>
-          </span>
+          <div className={styles.logoImgWrap}>
+            <img src="/images/pastar-mark-reverse.svg" alt="PastAR" className={`${styles.logoIcon} ${styles.logoIconDark}`} />
+            <img src="/images/pastar-mark.svg" alt="PastAR" className={`${styles.logoIcon} ${styles.logoIconLight}`} />
+          </div>
+          <span className={styles.logoText}>PastAR</span>
         </a>
 
         <ul className={`${styles.links} ${menuOpen ? styles.linksOpen : ''}`}>

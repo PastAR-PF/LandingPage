@@ -1,8 +1,21 @@
-import { Inter, Outfit } from 'next/font/google';
+import { Space_Grotesk, Source_Sans_3, IBM_Plex_Mono } from 'next/font/google';
 import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+});
+const sourceSans3 = Source_Sans_3({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  variable: '--font-source-sans',
+});
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+});
 
 export const metadata = {
   title: "PastAR — Gestión Inteligente de Ganado Bovino",
@@ -28,7 +41,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="es" className={`${spaceGrotesk.variable} ${sourceSans3.variable} ${ibmPlexMono.variable}`}>
       <body>{children}</body>
     </html>
   );

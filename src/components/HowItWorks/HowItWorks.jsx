@@ -2,92 +2,89 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './HowItWorks.module.css';
-import { HiCube, HiDeviceMobile, HiStatusOnline, HiLightningBolt } from 'react-icons/hi';
+import DotGrid from '@/components/ui/DotGrid';
+import Stepper, { Step } from '@/components/ui/Stepper';
 
 const steps = [
   {
-    number: '01',
-    title: 'Colocá el collar',
-    description: 'Ajustá el collar sensor en el cuello del animal. Es liviano, resistente al agua y se carga con energía solar.',
-    icon: <HiCube />,
+    n: '01',
+    title: 'Registrás tu rodeo',
+    body: 'Cada animal recibe su caravana electrónica única. El sistema registra raza, fecha de nacimiento, genealogía, categoría productiva y peso inicial. La carga se hace desde la app directamente en el campo, incluso sin conectividad.',
   },
   {
-    number: '02',
-    title: 'Registrá tu rodeo',
-    description: 'Cargá la información de tu establecimiento, potreros y categorías de hacienda en la plataforma.',
-    icon: <HiDeviceMobile />,
+    n: '02',
+    title: 'El collar transmite datos',
+    body: 'El collar integra acelerómetro y giroscopio, sensor de temperatura y humedad, y GPS NEO-6M. El microcontrolador ESP32 gestiona el Deep Sleep, almacena un buffer local y transmite por WiFi/Bluetooth cuando hay conexión.',
   },
   {
-    number: '03',
-    title: 'Monitoreá en tiempo real',
-    description: 'Accedé al dashboard para ver ubicación, temperatura, actividad y alertas de cada animal, 24/7.',
-    icon: <HiStatusOnline />,
+    n: '03',
+    title: 'La plataforma analiza',
+    body: 'Los datos se procesan correlacionando el Índice de Temperatura y Humedad (ITH) con la actividad del rodeo. Los modelos detectan automáticamente celo, partos y eventos sanitarios, modelados por raza.',
   },
   {
-    number: '04',
-    title: 'Tomá decisiones con datos',
-    description: 'Usá los análisis predictivos y reportes para optimizar la producción y prevenir problemas sanitarios.',
-    icon: <HiLightningBolt />,
+    n: '04',
+    title: 'Recibís alertas y reportes',
+    body: 'El sistema te avisa con anticipación: comportamiento anómalo, animal fuera del perímetro o desviaciones productivas. Cada alerta incluye el historial del animal y una recomendación de acción concreta.',
   },
 ];
 
 export default function HowItWorks() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className={`section ${styles.section}`} id="how-it-works" ref={ref}>
-      {/* Wave top */}
-      <div className={styles.waveTop}>
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,0 L0,0 Z" fill="var(--color-bg)" />
-        </svg>
-      </div>
+    <section className={styles.section} id="how" ref={ref}>
+      {/* DotGrid invertido — fondo Forest oscuro, puntos sage */}
+      <DotGrid
+        dotSize={4}
+        gap={26}
+        baseColor="#2A6B43"
+        activeColor="#85C49A"
+        proximity={130}
+        shockRadius={200}
+        shockStrength={3}
+      />
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <motion.div
           className={styles.header}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
         >
-          <span className="section-label">Cómo funciona</span>
-          <h2 className="section-title">
-            Empezá en <span className={styles.highlight}>4 simples pasos</span>
-          </h2>
-          <p className="section-subtitle">
-            Desde la instalación del collar hasta los primeros insights, en minutos.
+          <span className={`section-label ${styles.label}`}>Cómo funciona</span>
+          <motion.h2
+            className={styles.title}
+            initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
+            animate={inView ? { clipPath: 'inset(0 0 0% 0)', opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+          >
+            De la caravana al <span className={styles.highlight}>insight</span>
+          </motion.h2>
+          <p className={styles.subtitle}>
+            Un flujo continuo de datos que convierte cada animal en una fuente de inteligencia productiva.
           </p>
         </motion.div>
 
-        <div className={styles.timeline}>
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              className={styles.step}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
-            >
-              <div className={styles.stepNumber}>
-                <span>{step.number}</span>
-              </div>
-              {i < steps.length - 1 && <div className={styles.connector} />}
-              <div className={styles.stepContent}>
-                <span className={styles.stepIcon}>{step.icon}</span>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDesc}>{step.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Wave bottom */}
-      <div className={styles.waveBottom}>
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,30 1440,40 L1440,80 L0,80 Z" fill="var(--color-bg)" />
-        </svg>
+        {/* Stepper en card blanca */}
+        <motion.div
+          className={styles.stepperCard}
+          initial={{ opacity: 0, y: 36 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.65, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <Stepper backButtonText="Anterior" nextButtonText="Siguiente">
+            {steps.map((s, i) => (
+              <Step key={i}>
+                <div className={styles.stepContent}>
+                  <span className={styles.stepNum}>{s.n}</span>
+                  <h3 className={styles.stepTitle}>{s.title}</h3>
+                  <p className={styles.stepBody}>{s.body}</p>
+                </div>
+              </Step>
+            ))}
+          </Stepper>
+        </motion.div>
       </div>
     </section>
   );
