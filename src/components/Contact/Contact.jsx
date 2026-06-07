@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Contact.module.css';
-import { HiMail, HiLocationMarker, HiAcademicCap } from 'react-icons/hi';
+import { HiMail, HiLocationMarker } from 'react-icons/hi';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -20,7 +20,7 @@ export default function Contact() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-label">Contacto</span>
+          <span className="section-label">Sumate desde el día uno</span>
           <motion.h2
             className={`section-title ${styles.headerTitle}`}
             initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
@@ -62,13 +62,8 @@ export default function Contact() {
               </div>
               <div>
                 <h4>Ubicación</h4>
-                <p>UTN — Facultad Regional Córdoba, Argentina</p>
+                <p>Córdoba, Argentina</p>
               </div>
-            </div>
-
-            <div className={styles.utnBadge}>
-              <HiAcademicCap className={styles.utnIcon} />
-              <p>Proyecto de Tesis Final — Ingeniería en Sistemas, UTN FRC 2026</p>
             </div>
           </motion.div>
 

@@ -10,21 +10,25 @@ const steps = [
     n: '01',
     title: 'Registrás tu rodeo',
     body: 'Cada animal recibe su caravana electrónica única. El sistema registra raza, fecha de nacimiento, genealogía, categoría productiva y peso inicial. La carga se hace desde la app directamente en el campo, incluso sin conectividad.',
+    img: '/images/steps/step-01-registro.svg',
   },
   {
     n: '02',
     title: 'El collar transmite datos',
     body: 'El collar integra acelerómetro y giroscopio, sensor de temperatura y humedad, y GPS NEO-6M. El microcontrolador ESP32 gestiona el Deep Sleep, almacena un buffer local y transmite por WiFi/Bluetooth cuando hay conexión.',
+    img: '/images/steps/step-02-collar.svg',
   },
   {
     n: '03',
     title: 'La plataforma analiza',
     body: 'Los datos se procesan correlacionando el Índice de Temperatura y Humedad (ITH) con la actividad del rodeo. Los modelos detectan automáticamente celo, partos y eventos sanitarios, modelados por raza.',
+    img: '/images/steps/step-03-analiza.svg',
   },
   {
     n: '04',
     title: 'Recibís alertas y reportes',
     body: 'El sistema te avisa con anticipación: comportamiento anómalo, animal fuera del perímetro o desviaciones productivas. Cada alerta incluye el historial del animal y una recomendación de acción concreta.',
+    img: '/images/steps/step-04-alertas.svg',
   },
 ];
 
@@ -52,7 +56,7 @@ export default function HowItWorks() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
         >
-          <span className={`section-label ${styles.label}`}>Cómo funciona</span>
+          <span className={`section-label ${styles.label}`}>Cuatro pasos al control total</span>
           <motion.h2
             className={styles.title}
             initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
@@ -77,9 +81,14 @@ export default function HowItWorks() {
             {steps.map((s, i) => (
               <Step key={i}>
                 <div className={styles.stepContent}>
-                  <span className={styles.stepNum}>{s.n}</span>
-                  <h3 className={styles.stepTitle}>{s.title}</h3>
-                  <p className={styles.stepBody}>{s.body}</p>
+                  <div className={styles.stepImageWrap}>
+                    <img src={s.img} alt={s.title} className={styles.stepImage} />
+                  </div>
+                  <div className={styles.stepText}>
+                    <span className={styles.stepNum}>{s.n}</span>
+                    <h3 className={styles.stepTitle}>{s.title}</h3>
+                    <p className={styles.stepBody}>{s.body}</p>
+                  </div>
                 </div>
               </Step>
             ))}

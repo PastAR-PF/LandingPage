@@ -2,7 +2,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Features.module.css';
-import DotGrid from '@/components/ui/DotGrid';
 import MagicBento from '@/components/ui/MagicBento';
 
 export default function Features() {
@@ -11,17 +10,6 @@ export default function Features() {
 
   return (
     <section className={styles.section} id="features" ref={ref}>
-      {/* DotGrid — fondo blanco, puntos verdes */}
-      <DotGrid
-        dotSize={4}
-        gap={26}
-        baseColor="#C8DDD0"
-        activeColor="#1A5C38"
-        proximity={130}
-        shockRadius={200}
-        shockStrength={3}
-      />
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Header */}
         <motion.div
@@ -30,7 +18,7 @@ export default function Features() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
         >
-          <span className="section-label">Funcionalidades</span>
+          <span className="section-label">El campo que piensa solo</span>
           <motion.h2
             className="section-title"
             initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}

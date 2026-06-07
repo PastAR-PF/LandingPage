@@ -1,5 +1,4 @@
 import styles from './Footer.module.css';
-import { HiHeart } from 'react-icons/hi';
 
 const footerLinks = {
   Producto: [
@@ -9,7 +8,6 @@ const footerLinks = {
   Empresa: [
     { label: 'Quiénes Somos', href: '#team' },
     { label: 'Contacto', href: '#contact' },
-    { label: 'UTN FRC', href: 'https://www.frc.utn.edu.ar/', external: true },
   ],
   Legal: [
     { label: 'Política de Privacidad', href: '#' },
@@ -59,10 +57,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © 2025 PastAR — Proyecto de Tesis Final, UTN Facultad Regional Córdoba.
-          </p>
-          <p className={styles.madeWith}>
-            Hecho con <HiHeart className={styles.heart} /> en Córdoba, Argentina
+            © 2025 PastAR — Tecnología ganadera de precisión.
           </p>
         </div>
       </div>

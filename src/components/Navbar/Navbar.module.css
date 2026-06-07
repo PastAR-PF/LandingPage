@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 14px 24px;
+  padding: 14px clamp(24px, 4.5vw, 72px);
   transition: background-color 0.22s var(--ease-out),
               box-shadow 0.22s var(--ease-out),
               padding 0.22s var(--ease-out),
@@ -19,16 +19,16 @@
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(26, 92, 56, 0.10);
   box-shadow: 0 1px 32px rgba(26, 92, 56, 0.08), 0 0 0 1px rgba(255,255,255,0.3) inset;
-  padding: 10px 24px;
+  padding: 10px clamp(24px, 4.5vw, 72px);
 }
 
 .inner {
-  max-width: var(--container-wide);
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  position: relative;
 }
 
 /* ===== LOGO ===== */
@@ -86,8 +86,10 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  flex: 1;
-  justify-content: center;
+  /* Centrado absoluto: independiente del ancho del logo y CTA */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .link {
@@ -116,28 +118,11 @@
   background: var(--color-primary-ghost);
 }
 
-/* ===== CTA ===== */
-.ctaDesktop {
-  font-size: 0.85rem;
-  padding: 9px 20px;
-  flex-shrink: 0;
-}
-
-/* Over dark hero — ghost white */
-.navbar:not(.scrolled) .ctaDesktop {
-  background: rgba(255, 255, 255, 0.14);
-  color: #FFFFFF;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  box-shadow: none;
-}
-
-.navbar:not(.scrolled) .ctaDesktop:hover {
-  background: rgba(255, 255, 255, 0.24);
-  box-shadow: none;
-}
-
-.ctaMobile {
-  display: none;
+/* ===== RIGHT SLOT ===== */
+.rightSlot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 /* ===== BURGER ===== */
@@ -150,7 +135,6 @@
   z-index: 1001;
   padding: 4px;
   transition: color 0.15s var(--ease-out);
-  flex-shrink: 0;
 }
 
 .navbar.scrolled .burger {
@@ -189,7 +173,5 @@
     background: var(--color-primary-ghost) !important;
   }
 
-  .ctaDesktop { display: none; }
-  .ctaMobile { display: block; margin-top: 16px; }
   .burger { display: block; }
 }

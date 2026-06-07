@@ -140,29 +140,6 @@
   font-weight: 500;
 }
 
-.utnBadge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: var(--radius-md);
-  margin-top: 4px;
-}
-
-.utnIcon {
-  font-size: 1.4rem;
-  color: var(--sage);
-  flex-shrink: 0;
-}
-
-.utnBadge p {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.55);
-  font-weight: 500;
-}
-
 /* Form */
 .form {
   background: #FFFFFF;

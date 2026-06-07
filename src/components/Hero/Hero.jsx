@@ -1,8 +1,9 @@
 'use client';
-import { useRef, useEffect } from 'react';
-import { motion, useInView, useSpring, useMotionValue } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import styles from './Hero.module.css';
 import LightRays from './LightRays';
+import StampArgentino from './StampArgentino';
 import TextType from '@/components/ui/TextType';
 import CountUp from '@/components/ui/CountUp';
 
@@ -10,20 +11,24 @@ import CountUp from '@/components/ui/CountUp';
 export default function Hero() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-
-  /* Parallax sutil en la imagen de la vaca */
-  const imgY = useMotionValue(0);
-  const imgSpring = useSpring(imgY, { stiffness: 60, damping: 20 });
-
-  useEffect(() => {
-    const onScroll = () => imgY.set(window.scrollY * 0.12);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [imgY]);
+  const [stamped, setStamped] = useState(false);
 
   return (
     <section className={styles.hero} id="hero" ref={ref}>
       <div className={styles.bgSolid} />
+
+      {/* Video de fondo (loop, silenciado) + overlay forest para contraste */}
+      <video
+        className={styles.bgVideo}
+        src="/videos/hero-bg.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
+      <div className={styles.bgOverlay} />
 
       {/* Light Rays — origen top-right, apuntan hacia la vaca */}
       <LightRays
@@ -68,17 +73,17 @@ export default function Hero() {
             <h1 className={styles.title}>
               <TextType
                 text="Nuestro campo, nuestros datos"
-                as="span"
-                typingSpeed={62}
+                typingSpeed={100}
                 initialDelay={450}
                 loop={false}
                 showCursor={true}
                 cursorCharacter="▍"
                 cursorClassName={styles.cursor}
+                onComplete={() => setStamped(true)}
               />
             </h1>
             {/* Guiño implícito a la bandera argentina — celeste / blanco / celeste */}
-            <span className={styles.flagRibbon} aria-hidden="true" />
+            <span className={styles.flagRibbon} aria-hidden="false" />
           </motion.div>
 
           <motion.p
@@ -116,22 +121,22 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Imagen vaca con parallax */}
-      <motion.div
-        className={styles.imageBlock}
-        style={{ y: imgSpring }}
-        initial={{ opacity: 0, x: 60 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.9, delay: 0.18, ease: [0.23, 1, 0.32, 1] }}
-      >
-        <div className={styles.phoneWrapper}>
-          <img
-            src="/images/cow_transparent.png"
-            alt="Vaca con Smart Collar PastAR"
-            className={styles.phoneImage}
-          />
-        </div>
-      </motion.div>
+      {/* Sello argentino — impacta al terminar de tipear el título */}
+      <div className={styles.stampAnchor} aria-hidden="true">
+        <motion.div
+          className={styles.stamp}
+          initial={{ opacity: 0, scale: 4, rotate: -18, filter: 'blur(5px)' }}
+          animate={stamped ? {
+            opacity: [0, 1, 1],
+            scale: [4, 0.9, 1],
+            rotate: [-18, -9, -8],
+            filter: ['blur(5px)', 'blur(0px)', 'blur(0px)'],
+          } : {}}
+          transition={{ duration: 0.45, times: [0, 0.6, 1], ease: 'easeOut' }}
+        >
+          <StampArgentino />
+        </motion.div>
+      </div>
 
       {/* Wave bottom */}
       <div className={styles.waveBottom}>

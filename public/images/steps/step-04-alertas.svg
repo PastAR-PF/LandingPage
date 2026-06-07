@@ -1,0 +1,26 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="150" r="118" fill="#EAF5EE"/>
+  <!-- phone -->
+  <rect x="138" y="58" width="144" height="184" rx="22" fill="#FFFFFF" stroke="#1A5C38" stroke-width="4"/>
+  <line x1="192" y1="74" x2="228" y2="74" stroke="#D4EDD9" stroke-width="6" stroke-linecap="round"/>
+  <!-- notification card 1 (alert) -->
+  <rect x="156" y="96" width="108" height="44" rx="11" fill="#FDF4E3" stroke="#E0A33E" stroke-width="2.5"/>
+  <path d="M178 108 l9 16 h-18 z" fill="#E0A33E"/>
+  <rect x="178" y="115" width="2.6" height="5" rx="1.3" fill="#FFFFFF"/>
+  <circle cx="179.3" cy="122" r="1.4" fill="#FFFFFF"/>
+  <line x1="198" y1="111" x2="250" y2="111" stroke="#1A5C38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="198" y1="124" x2="236" y2="124" stroke="#D4EDD9" stroke-width="5" stroke-linecap="round"/>
+  <!-- notification card 2 (ok) -->
+  <rect x="156" y="152" width="108" height="44" rx="11" fill="#EAF5EE" stroke="#85C49A" stroke-width="2.5"/>
+  <circle cx="178" cy="174" r="10" fill="#3A8A58"/>
+  <path d="M172.5 174 l4 4.5 l7.5 -9" stroke="#FFFFFF" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="198" y1="167" x2="250" y2="167" stroke="#1A5C38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="198" y1="180" x2="236" y2="180" stroke="#D4EDD9" stroke-width="5" stroke-linecap="round"/>
+  <!-- bell badge -->
+  <g transform="translate(268 70)">
+    <circle cx="0" cy="0" r="26" fill="#1A5C38"/>
+    <path d="M0 -13 c-8 0 -13 6 -13 14 v6 l-4 5 h34 l-4 -5 v-6 c0 -8 -5 -14 -13 -14 z" fill="#FFFFFF"/>
+    <path d="M-4 15 a4 4 0 0 0 8 0" fill="#FFFFFF"/>
+    <circle cx="12" cy="-12" r="8" fill="#E0A33E" stroke="#FFFFFF" stroke-width="2.5"/>
+  </g>
+</svg>
