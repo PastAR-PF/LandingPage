@@ -1,5 +1,6 @@
 import { Space_Grotesk, Source_Sans_3, IBM_Plex_Mono } from 'next/font/google';
 import "./globals.css";
+import AgentationWrapper from '@/components/AgentationWrapper';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -42,7 +43,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className={`${spaceGrotesk.variable} ${sourceSans3.variable} ${ibmPlexMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <AgentationWrapper />
+      </body>
     </html>
   );
 }

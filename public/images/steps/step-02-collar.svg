@@ -1,0 +1,22 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="150" r="118" fill="#EAF5EE"/>
+  <!-- signal waves -->
+  <g stroke="#85C49A" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M250 96 a78 78 0 0 1 0 108" opacity="0.9"/>
+    <path d="M268 78 a104 104 0 0 1 0 144" opacity="0.6"/>
+    <path d="M286 60 a130 130 0 0 1 0 180" opacity="0.35"/>
+  </g>
+  <!-- collar strap -->
+  <path d="M120 150 q-26 0 -26 26 v40 q0 16 16 16 h24" stroke="#1A5C38" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M120 150 q26 0 26 26 v40 q0 16 -16 16" stroke="#1A5C38" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <!-- device body -->
+  <rect x="96" y="108" width="92" height="74" rx="18" fill="#FFFFFF" stroke="#1A5C38" stroke-width="4"/>
+  <rect x="112" y="124" width="60" height="42" rx="10" fill="#1A5C38"/>
+  <!-- solar cells -->
+  <line x1="124" y1="124" x2="124" y2="166" stroke="#3A8A58" stroke-width="2.5"/>
+  <line x1="142" y1="124" x2="142" y2="166" stroke="#3A8A58" stroke-width="2.5"/>
+  <line x1="160" y1="124" x2="160" y2="166" stroke="#3A8A58" stroke-width="2.5"/>
+  <!-- gps dot -->
+  <circle cx="234" cy="150" r="9" fill="#F2C94C"/>
+  <circle cx="234" cy="150" r="9" fill="none" stroke="#1A5C38" stroke-width="3"/>
+</svg>

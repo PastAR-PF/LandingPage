@@ -19,6 +19,7 @@ export default function TextType({
   textColors = [],
   variableSpeed,
   onSentenceComplete,
+  onComplete,
   startOnVisible = false,
   reverseMode = false,
   ...props
@@ -88,7 +89,10 @@ export default function TextType({
             setCurrentCharIndex((prev) => prev + 1);
           }, variableSpeed ? getRandomSpeed() : typingSpeed);
         } else if (textArray.length >= 1) {
-          if (!loop && currentTextIndex === textArray.length - 1) return;
+          if (!loop && currentTextIndex === textArray.length - 1) {
+            onComplete?.();
+            return;
+          }
           timeout = setTimeout(() => setIsDeleting(true), pauseDuration);
         }
       }
@@ -101,7 +105,7 @@ export default function TextType({
     }
     return () => clearTimeout(timeout);
   }, [currentCharIndex, displayedText, isDeleting, typingSpeed, deletingSpeed, pauseDuration,
-      textArray, currentTextIndex, loop, initialDelay, isVisible, reverseMode, variableSpeed, onSentenceComplete]);
+      textArray, currentTextIndex, loop, initialDelay, isVisible, reverseMode, variableSpeed, onSentenceComplete, onComplete]);
 
   const shouldHideCursor = hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
 

@@ -5,7 +5,7 @@ import { HiMenu, HiX } from 'react-icons/hi';
 
 const navLinks = [
   { label: 'Inicio', href: '#hero' },
-  { label: 'Funcionalidades', href: '#features' },
+  { label: 'Funcionalidades', href: '#features'},
   { label: 'Cómo funciona', href: '#how' },
   { label: 'Hardware IoT', href: '#collar' },
   { label: 'Equipo', href: '#team' },
@@ -42,24 +42,17 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          <li className={styles.ctaMobile}>
-            <a href="#contact" className="btn btn-primary" onClick={handleLinkClick}>
-              Solicitar Demo
-            </a>
-          </li>
         </ul>
 
-        <a href="#contact" className={`btn btn-primary ${styles.ctaDesktop}`}>
-          Solicitar Demo
-        </a>
-
-        <button
-          className={styles.burger}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
-        </button>
+        <div className={styles.rightSlot}>
+          <button
+            className={styles.burger}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+          </button>
+        </div>
       </div>
     </nav>
   );
