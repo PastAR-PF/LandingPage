@@ -2,7 +2,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './HowItWorks.module.css';
-import DotGrid from '@/components/ui/DotGrid';
 import Stepper, { Step } from '@/components/ui/Stepper';
 
 const steps = [
@@ -38,17 +37,6 @@ export default function HowItWorks() {
 
   return (
     <section className={styles.section} id="how" ref={ref}>
-      {/* DotGrid invertido — fondo Forest oscuro, puntos sage */}
-      <DotGrid
-        dotSize={4}
-        gap={26}
-        baseColor="#2A6B43"
-        activeColor="#85C49A"
-        proximity={130}
-        shockRadius={200}
-        shockStrength={3}
-      />
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <motion.div
           className={styles.header}

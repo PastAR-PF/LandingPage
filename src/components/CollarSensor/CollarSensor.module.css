@@ -3,6 +3,9 @@
   position: relative;
   z-index: 0;
   overflow: visible;
+  /* Sombra superior: profundidad al tapar a "Cómo funciona" mientras sube
+     (esta sección es interludio normal, no usa StackSection). */
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.28);
 }
 
 .section::before,

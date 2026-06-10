@@ -2,6 +2,11 @@
   background: var(--color-bg);
   padding: 120px 0;
   position: relative;
+  /* Llena la pantalla para el efecto de apilado/tapado. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ===== Parte 1 — Historia ===== */

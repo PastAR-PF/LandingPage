@@ -3,6 +3,11 @@
   position: relative;
   overflow: hidden;
   padding: 100px 0 110px;
+  /* Llena la pantalla para el efecto de apilado/tapado. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header {

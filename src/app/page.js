@@ -6,18 +6,21 @@ import CollarSensor from '@/components/CollarSensor/CollarSensor';
 import Team from '@/components/Team/Team';
 import Contact from '@/components/Contact/Contact';
 import Footer from '@/components/Footer/Footer';
+import StackSection from '@/components/StackSection/StackSection';
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
+        {/* Sticky stacking: cada pane se pega y la siguiente lo tapa.
+            CollarSensor queda como interludio normal (tiene su pin 3D propio). */}
+        <StackSection><Hero /></StackSection>
+        <StackSection><Features /></StackSection>
+        <StackSection><HowItWorks /></StackSection>
         <CollarSensor />
-        <Team />
-        <Contact />
+        <StackSection><Team /></StackSection>
+        <StackSection><Contact /></StackSection>
       </main>
       <Footer />
     </>

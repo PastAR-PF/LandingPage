@@ -3,6 +3,11 @@
   background: var(--forest);
   position: relative;
   overflow: hidden;
+  /* Llena la pantalla para el efecto de apilado/tapado. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Override section-label sobre fondo oscuro */

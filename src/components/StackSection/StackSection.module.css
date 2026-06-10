@@ -1,0 +1,29 @@
+/* Sticky con `top` calculado por JS (= viewportHeight - sectionHeight, <= 0):
+   la sección se lee completa y queda fija en su última pantalla mientras la
+   siguiente sube y la tapa. */
+.pane {
+  position: sticky;
+  top: 0;
+  /* Sombra superior: la sección que sube proyecta profundidad sobre la anterior. */
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.28);
+}
+
+/* Overlay que oscurece la sección a medida que la tapan (profundidad). */
+.darken {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Mobile: scroll normal, sin apilado. */
+@media (max-width: 768px) {
+  .pane {
+    position: static;
+    box-shadow: none;
+  }
+  .darken {
+    display: none;
+  }
+}

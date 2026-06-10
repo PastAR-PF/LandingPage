@@ -114,17 +114,22 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* El scroll suave lo maneja Lenis — scroll-behavior nativo entra en conflicto. */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Contiene cualquier overflow horizontal (blobs decorativos) sin crear scroll
+     container (clip no rompe position:sticky, a diferencia de hidden/auto). */
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  background: var(--color-bg);
+  /* Fondo oscuro: se ve en los bordes cuando una sección se achica al quedar
+     tapada (sticky stacking). clip en vez de hidden para no romper position:sticky. */
+  background: #08160E;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,6 +1,6 @@
 import { Space_Grotesk, Source_Sans_3, IBM_Plex_Mono } from 'next/font/google';
 import "./globals.css";
-import AgentationWrapper from '@/components/AgentationWrapper';
+import SmoothScroll from '@/components/SmoothScroll';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -44,8 +44,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={`${spaceGrotesk.variable} ${sourceSans3.variable} ${ibmPlexMono.variable}`}>
       <body>
-        {children}
-        <AgentationWrapper />
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
