@@ -2,7 +2,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Hero.module.css';
-import LightRays from './LightRays';
 import StampArgentino from './StampArgentino';
 import TextType from '@/components/ui/TextType';
 import CountUp from '@/components/ui/CountUp';
@@ -12,6 +11,12 @@ export default function Hero() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const [stamped, setStamped] = useState(false);
+  const [typed, setTyped] = useState(false);
+
+  const handleTypingComplete = () => {
+    setTyped(true);
+    setStamped(true);
+  };
 
   return (
     <section className={styles.hero} id="hero" ref={ref}>
@@ -29,22 +34,6 @@ export default function Hero() {
         aria-hidden="true"
       />
       <div className={styles.bgOverlay} />
-
-      {/* Light Rays — origen top-right, apuntan hacia la vaca */}
-      <LightRays
-        raysOrigin="top-right"
-        raysColor="#A8D5B5"
-        raysSpeed={0.7}
-        lightSpread={3.2}
-        rayLength={3.8}
-        fadeDistance={1.8}
-        saturation={1.8}
-        pulsating={true}
-        followMouse={true}
-        mouseInfluence={0.22}
-        noiseAmount={0.04}
-        distortion={0.06}
-      />
 
       <div className={styles.content}>
         <motion.div
@@ -76,10 +65,10 @@ export default function Hero() {
                 typingSpeed={100}
                 initialDelay={450}
                 loop={false}
-                showCursor={true}
+                showCursor={!typed}
                 cursorCharacter="▍"
                 cursorClassName={styles.cursor}
-                onComplete={() => setStamped(true)}
+                onComplete={handleTypingComplete}
               />
             </h1>
             {/* Guiño implícito a la bandera argentina — celeste / blanco / celeste */}
