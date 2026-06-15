@@ -1,133 +1,340 @@
-.section {
-  background: #0E3D24;
+/* ──────────────────────────────────────────────────────
+   HowItWorks — Layout scroll-driven tipo Halter
+   ────────────────────────────────────────────────────── */
+
+/* ── Wrapper exterior: crea el espacio de scroll ── */
+.scrollWrapper {
+  /* 4 pasos × 100vh = 400vh de espacio de scroll total */
+  height: 400vh;
   position: relative;
+}
+
+/* ── Sección sticky: vive pegada al viewport los 400vh ── */
+.section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  padding: 100px 0 110px;
-  /* Llena la pantalla para el efecto de apilado/tapado. */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 48px;
+/* ══════════════════════════════════════
+   COLUMNA IZQUIERDA — título + pasos
+   ══════════════════════════════════════ */
+.leftCol {
+  background: #E8E2CA;
+  padding: 0 56px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow: hidden;
 }
 
-.label {
-  color: var(--sage) !important;
-}
-.label::before {
-  background: var(--sage) !important;
+/* Bloque de título — fijo arriba dentro de la columna */
+.titleBlock {
+  padding-top: 64px;
+  padding-bottom: 28px;
+  flex-shrink: 0;
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2rem, 3.2vw, 3rem);
   font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.15;
-  margin-bottom: 16px;
+  color: var(--forest);
+  line-height: 1.12;
+  margin: 0 0 14px;
 }
 
 .highlight {
-  color: var(--sage);
+  color: var(--moss);
 }
 
 .subtitle {
-  font-size: clamp(1.05rem, 1.2vw, 1.2rem);
-  max-width: 560px;
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
 }
 
-/* Stepper card */
-.stepperCard {
-  max-width: 780px;
-  margin: 0 auto;
-  background: #FFFFFF;
-  border-radius: var(--radius-xl);
-  padding: 40px 44px 36px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+/* ── Lista de pasos: llena el resto de la columna ── */
+.stepsList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Distribuye los pasos uniformemente en el espacio disponible */
+  justify-content: space-between;
+  padding-bottom: 40px;
 }
 
-/* Step content */
-.stepContent {
+.step {
   display: grid;
-  grid-template-columns: 0.85fr 1fr;
-  align-items: center;
-  gap: 32px;
-  padding: 8px 0 16px;
-  min-height: 220px;
+  grid-template-columns: 44px 1fr;
+  gap: 0 20px;
+  cursor: default;
+  /* Sin min-height: el espacio lo maneja justify-content del padre */
 }
 
-.stepImageWrap {
+/* ── Timeline: dot + línea ── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 92, 56, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(26, 92, 56, 0.4);
+  background: transparent;
+  flex-shrink: 0;
+  transition: border-color 0.4s ease, background 0.4s ease,
+    color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.stepImage {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  display: block;
+.dotActive {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: #ffffff;
+  box-shadow: 0 0 0 5px rgba(26, 92, 56, 0.18);
 }
 
-.stepText {
+.dotDone {
+  border-color: var(--moss);
+  background: var(--moss);
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  min-height: 16px;
+  background: rgba(26, 92, 56, 0.15);
+  margin: 5px 0;
+  transition: background 0.5s ease;
+}
+
+.lineDone {
+  background: var(--moss);
+}
+
+/* ── Cuerpo de cada paso ── */
+.stepBody {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* Sin min-height — la distribución la hace el flex padre */
 }
 
-.stepNum {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+.stepLabel {
+  display: block;
+  font-size: 0.7rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--moss);
-  background: var(--mint);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  width: fit-content;
-  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  padding-top: 6px; /* alinea visualmente con el centro del dot */
 }
 
 .stepTitle {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--forest);
-  line-height: 1.25;
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  font-weight: 600;
+  color: rgba(26, 92, 56, 0.38);
+  margin: 0;
+  transition: color 0.35s ease, font-size 0.35s ease;
 }
 
-.stepBody {
-  font-size: 0.98rem;
+.stepTitleActive {
+  color: var(--forest);
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+}
+
+/* Detalle expandible — AnimatePresence anima height: 0 → auto */
+.stepDetail {
+  overflow: hidden;
+}
+
+.stepDesc {
+  font-size: 0.93rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
+  margin: 10px 0 14px;
 }
 
-@media (max-width: 680px) {
-  .stepContent {
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.bulletCheck {
+  color: var(--moss);
+  font-size: 0.82rem;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   COLUMNA DERECHA — sketch (sticky natural dentro de section sticky)
+   ══════════════════════════════════════ */
+.rightCol {
+  background: #E8E2CA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Frame que contiene imagen + SVG overlay */
+.sketchFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.sketchWrapper {
+  position: relative;
+  width: 92%;
+  aspect-ratio: 1 / 1;
+  max-width: calc(100vh - 140px);
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(26, 92, 56, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(26, 92, 56, 0.06),
+    0 2px 12px rgba(26, 92, 56, 0.08),
+    inset 0 1px 4px rgba(26, 92, 56, 0.04);
+  background: rgba(232, 226, 202, 0.5);
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.sketchWrapper:hover {
+  border-color: rgba(26, 92, 56, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(26, 92, 56, 0.1),
+    0 4px 24px rgba(26, 92, 56, 0.14),
+    inset 0 1px 4px rgba(26, 92, 56, 0.04);
+}
+
+/* Imagen del sketch */
+.sketchImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  padding: 16px;
+}
+
+/* SVG de highlight — superpuesto sobre la imagen */
+.highlightSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Chip con el paso activo — dentro del wrapper bordeado */
+.sketchChip {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 92, 56, 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 99px;
+  padding: 8px 20px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.sketchChipText {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ── Responsive: mobile → columna única ── */
+@media (max-width: 900px) {
+  .scrollWrapper {
+    height: auto; /* en mobile el scroll lo manejan los pasos normales */
+  }
+
+  .section {
+    position: relative;
+    height: auto;
     grid-template-columns: 1fr;
-    gap: 16px;
-    text-align: center;
+    overflow: visible;
   }
-  .stepImage {
-    max-width: 200px;
+
+  .leftCol {
+    padding: 60px 28px 60px;
+    order: 2;
+    overflow: visible;
   }
-  .stepText {
-    align-items: center;
+
+  .rightCol {
+    height: 80vw;
+    min-height: 260px;
+    order: 1;
+  }
+
+  .stepsList {
+    justify-content: flex-start;
+    gap: 24px;
+    padding-bottom: 20px;
+  }
+
+  .sketchFrame {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
   }
 }
 
-@media (max-width: 600px) {
-  .stepperCard {
-    padding: 28px 24px 24px;
+@media (max-width: 480px) {
+  .leftCol {
+    padding: 48px 20px 48px;
   }
-  .stepTitle {
-    font-size: 1.25rem;
+
+  .rightCol {
+    height: 75vw;
   }
 }

@@ -17,7 +17,7 @@ export default function Home() {
             CollarSensor queda como interludio normal (tiene su pin 3D propio). */}
         <StackSection><Hero /></StackSection>
         <StackSection><Features /></StackSection>
-        <StackSection><HowItWorks /></StackSection>
+        <HowItWorks />
         <CollarSensor />
         <StackSection><Team /></StackSection>
         <StackSection><Contact /></StackSection>

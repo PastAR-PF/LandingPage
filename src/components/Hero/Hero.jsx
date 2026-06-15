@@ -2,7 +2,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Hero.module.css';
-import StampArgentino from './StampArgentino';
 import TextType from '@/components/ui/TextType';
 import CountUp from '@/components/ui/CountUp';
 
@@ -10,12 +9,10 @@ import CountUp from '@/components/ui/CountUp';
 export default function Hero() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const [stamped, setStamped] = useState(false);
   const [typed, setTyped] = useState(false);
 
   const handleTypingComplete = () => {
     setTyped(true);
-    setStamped(true);
   };
 
   return (
@@ -109,23 +106,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Sello argentino — impacta al terminar de tipear el título */}
-      <div className={styles.stampAnchor} aria-hidden="true">
-        <motion.div
-          className={styles.stamp}
-          initial={{ opacity: 0, scale: 4, rotate: -18, filter: 'blur(5px)' }}
-          animate={stamped ? {
-            opacity: [0, 1, 1],
-            scale: [4, 0.9, 1],
-            rotate: [-18, -9, -8],
-            filter: ['blur(5px)', 'blur(0px)', 'blur(0px)'],
-          } : {}}
-          transition={{ duration: 0.45, times: [0, 0.6, 1], ease: 'easeOut' }}
-        >
-          <StampArgentino />
-        </motion.div>
-      </div>
     </section>
   );
 }
+

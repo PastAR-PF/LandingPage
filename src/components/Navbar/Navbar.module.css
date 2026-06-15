@@ -156,6 +156,12 @@
   box-shadow: 0 0 0 1px rgba(255,255,255,0.20) inset;
 }
 
+.linkActive {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18) inset;
+}
+
 .navbar.scrolled .link {
   color: var(--color-text-secondary);
   text-shadow: none;
@@ -165,6 +171,13 @@
   color: var(--forest);
   background: var(--color-primary-ghost);
   box-shadow: none;
+}
+
+.navbar.scrolled .linkActive {
+  color: var(--forest) !important;
+  background: rgba(26, 92, 56, 0.10);
+  box-shadow: none;
+  font-weight: 600;
 }
 
 /* ===== RIGHT SLOT ===== */
